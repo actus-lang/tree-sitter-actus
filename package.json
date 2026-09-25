@@ -1,0 +1,31 @@
+{
+  "name": "tree-sitter-actus",
+  "version": "0.1.0",
+  "description": "Tree-sitter grammar and editor queries for the Actus language",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/actus-lang/tree-sitter-actus"
+  },
+  "main": "bindings/node",
+  "scripts": {
+    "generate": "tree-sitter generate",
+    "test": "tree-sitter test",
+    "parse": "tree-sitter parse",
+    "highlight": "tree-sitter highlight"
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.actus",
+      "file-types": [
+        "act"
+      ]
+    }
+  ],
+  "devDependencies": {
+    "tree-sitter-cli": "^0.25.6"
+  },
+  "allowScripts": {
+    "tree-sitter-cli@0.25.10": true
+  }
+}

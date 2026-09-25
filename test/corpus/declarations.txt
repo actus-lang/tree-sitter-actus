@@ -1,0 +1,97 @@
+==================
+declarations and modules
+==================
+import driver::gpio;
+open registers;
+open verb add(erg left: Int, abs right: Int) -> Int { return left + right; }
+------------------
+
+(source_file
+  (import_declaration
+    (module_path
+      (identifier)
+      (identifier)))
+  (sibling_open_declaration
+    (identifier))
+  (verb_declaration
+    name: (identifier)
+    (parameter_list
+      (parameter
+        (role)
+        (parameter_name
+          (identifier))
+        (type_name
+          (identifier)))
+      (parameter
+        (role)
+        (parameter_name
+          (identifier))
+        (type_name
+          (identifier))))
+    (return_type
+      (type_name
+        (identifier)))
+    (block
+      (return_statement
+        (expression
+          (binary_expression
+            (expression
+              (primary_expression
+                (identifier)))
+            (expression
+              (primary_expression
+                (identifier)))))))))
+
+==================
+struct enum and role
+==================
+open struct Point { x: Int, erg payload: Buffer }
+enum Color { Red, Green, Rgb(Int, Int, Int) }
+role Writer { verb write(abs self: Self, abs data: Buffer) -> Int; }
+------------------
+
+(source_file
+  (struct_declaration
+    name: (identifier)
+    (field_block
+      (struct_field
+        (identifier)
+        (type_name
+          (identifier)))
+      (struct_field
+        (identifier)
+        (type_name
+          (identifier)))))
+  (enum_declaration
+    name: (identifier)
+    (enum_variant
+      (identifier))
+    (enum_variant
+      (identifier))
+    (enum_variant
+      (identifier)
+      (type_name
+        (identifier))
+      (type_name
+        (identifier))
+      (type_name
+        (identifier))))
+  (role_declaration
+    name: (identifier)
+    (role_method
+      (identifier)
+      (parameter_list
+        (parameter
+          (role)
+          (parameter_name)
+          (type_name
+            (identifier)))
+        (parameter
+          (role)
+          (parameter_name
+            (identifier))
+          (type_name
+            (identifier))))
+      (return_type
+        (type_name
+          (identifier))))))

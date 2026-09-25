@@ -1,0 +1,45 @@
+==================
+comments and generic types
+==================
+/// ქართული documentation 🚀
+verb identity[T: Writer](abs value: Box[Option[T]]) -> Result[T, Int] {
+  return value;
+}
+------------------
+
+(source_file
+  (doc_comment)
+  (verb_declaration
+    (identifier)
+    (generic_parameters
+      (generic_parameter
+        (identifier)
+        (role_bound
+          (type_name
+            (identifier)))))
+    (parameter_list
+      (parameter
+        (role)
+        (parameter_name
+          (identifier))
+        (type_name
+          (identifier)
+          (type_arguments
+            (type_name
+              (identifier)
+              (type_arguments
+                (type_name
+                  (identifier))))))))
+    (return_type
+      (type_name
+        (identifier)
+        (type_arguments
+          (type_name
+            (identifier))
+          (type_name
+            (identifier)))))
+    (block
+      (return_statement
+        (expression
+          (primary_expression
+            (identifier)))))))

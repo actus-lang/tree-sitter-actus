@@ -1,0 +1,92 @@
+==================
+expressions and case
+==================
+verb classify(abs input: Int) -> Int {
+  erg point = Point { x: 1, y: 2 };
+  erg result = point.x + 2 * 3;
+  case abs input {
+    0 => result,
+    _ => input + 1,
+  }
+}
+------------------
+
+(source_file
+  (verb_declaration
+    (identifier)
+    (parameter_list
+      (parameter
+        (role)
+        (parameter_name
+          (identifier))
+        (type_name
+          (identifier))))
+    (return_type
+      (type_name
+        (identifier)))
+    (block
+      (owner_declaration
+        (role)
+        (identifier)
+        (expression
+          (primary_expression
+            (struct_literal
+              (identifier)
+              (field_initializer
+                (identifier)
+                (expression
+                  (primary_expression
+                    (literal
+                      (integer)))))
+              (field_initializer
+                (identifier)
+                (expression
+                  (primary_expression
+                    (literal
+                      (integer)))))))))
+      (owner_declaration
+        (role)
+        (identifier)
+        (expression
+          (binary_expression
+            (expression
+              (postfix_expression
+                (field_access
+                  (expression
+                    (primary_expression
+                      (identifier)))
+                  (identifier))))
+            (expression
+              (binary_expression
+                (expression
+                  (primary_expression
+                    (literal
+                      (integer))))
+                (expression
+                  (primary_expression
+                    (literal
+                      (integer)))))))))
+      (case_statement
+        (expression
+          (primary_expression
+            (identifier)))
+        (case_branch
+          (pattern
+            (literal_pattern
+              (literal
+                (integer))))
+          (expression
+            (primary_expression
+              (identifier))))
+        (case_branch
+          (pattern
+            (wildcard_pattern))
+          (expression
+            (binary_expression
+              (expression
+                (primary_expression
+                  (identifier)))
+              (expression
+                (primary_expression
+                  (literal
+                    (integer)))))))))))

@@ -1,0 +1,4 @@
+/// Query smoke fixture
+open verb add(abs left: Int, erg right: Int) -> Int {
+  return left + right;
+}

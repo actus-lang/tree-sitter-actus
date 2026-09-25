@@ -1,0 +1,14 @@
+{
+  "grammars": [
+    {
+      "name": "actus",
+      "camelcase": "Actus",
+      "scope": "source.actus",
+      "path": ".",
+      "file-types": ["act"]
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0"
+  }
+}
