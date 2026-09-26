@@ -4,7 +4,7 @@
 (case_branch) @local.scope
 (case_statement) @local.scope
 (case_expression) @local.scope
-(for_statement) @local.scope
+(loop_statement) @local.scope
 
 ; Declaration definitions
 (verb_declaration name: (identifier) @local.definition)
@@ -15,11 +15,12 @@
 (generic_parameter (identifier) @local.definition)
 (parameter_name (identifier) @local.definition)
 (owner_declaration (identifier) @local.definition)
-(for_statement (identifier) @local.definition)
 
 ; Pattern bindings are branch-local definitions
 (pattern_binding (identifier) @local.definition)
 (named_pattern_binding (identifier) @local.definition)
+(parameter (parameter_name (identifier) @local.definition))
+(argument (expression (primary_expression (identifier) @local.reference)))
 
 ; Lexical references. Declaration-specific captures above take precedence in
 ; editor clients that support local query definitions.

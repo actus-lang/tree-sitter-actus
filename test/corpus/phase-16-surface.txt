@@ -1,0 +1,147 @@
+==================
+phase 16 language surface
+==================
+import driver::gpio;
+open registers;
+
+verb mutate(ins buffer: Buffer) { }
+verb view(abs input: Buffer) -> abs Buffer { return input; }
+
+verb main() -> Int {
+  erg buffer = Buffer[4];
+  mutate(buffer: ins buffer);
+  view(input: abs buffer);
+  return case abs buffer {
+    _ if true => 0,
+  };
+}
+------------------
+
+(source_file
+  (import_declaration
+    (module_path
+      (identifier)
+      (identifier)))
+  (sibling_open_declaration
+    (identifier))
+  (verb_declaration
+    (identifier)
+    (parameter_list
+      (parameter
+        (role)
+        (parameter_name
+          (identifier))
+        (type_name
+          (identifier))))
+    (block))
+  (verb_declaration
+    (identifier)
+    (parameter_list
+      (parameter
+        (role)
+        (parameter_name
+          (identifier))
+        (type_name
+          (identifier))))
+    (return_type
+      (type_name
+        (identifier)))
+    (block
+      (return_statement
+        (expression
+          (primary_expression
+            (identifier))))))
+  (verb_declaration
+    (identifier)
+    (parameter_list)
+    (return_type
+      (type_name
+        (identifier)))
+    (block
+      (owner_declaration
+        (owner_role)
+        (identifier)
+        (expression
+          (primary_expression
+            (buffer_literal
+              (expression
+                (primary_expression
+                  (literal
+                    (integer))))))))
+      (expression_statement
+        (expression
+          (postfix_expression
+            (expression
+              (primary_expression
+                (identifier)))
+            (argument_list
+              (argument
+                (identifier)
+                (role)
+                (expression
+                  (primary_expression
+                    (identifier))))))))
+      (expression_statement
+        (expression
+          (postfix_expression
+            (expression
+              (primary_expression
+                (identifier)))
+            (argument_list
+              (argument
+                (identifier)
+                (role)
+                (expression
+                  (primary_expression
+                    (identifier))))))))
+      (return_statement
+        (expression
+          (case_expression
+            (expression
+              (primary_expression
+                (identifier)))
+            (case_branch
+              (pattern
+                (wildcard_pattern))
+              (expression
+                (primary_expression
+                  (literal)))
+              (expression
+                (primary_expression
+                  (literal
+                    (integer)))))))))))
+
+==================
+ins is not an owner binding
+==================
+verb invalid() -> Int {
+  ins buffer = Buffer[4];
+  return 0;
+}
+------------------
+
+(source_file
+  (verb_declaration
+    (identifier)
+    (parameter_list)
+    (return_type
+      (type_name
+        (identifier)))
+    (block
+      (ERROR
+        (identifier))
+      (assignment_statement
+        (identifier)
+        (expression
+          (primary_expression
+            (buffer_literal
+              (expression
+                (primary_expression
+                  (literal
+                    (integer))))))))
+      (return_statement
+        (expression
+          (primary_expression
+            (literal
+              (integer))))))))
+

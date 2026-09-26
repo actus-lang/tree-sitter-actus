@@ -27,12 +27,12 @@ The canonical language spelling is used throughout this specification:
 - `verb` declares functions and methods;
 - `struct`, `enum`, `role`, and `perform` declare types and contracts;
 - `import` loads modules and `open <sibling>;` exposes a sibling facade;
-- `erg`, `abs`, and `dat` express ownership roles;
+- `erg`, `abs`, `dat`, and `ins` express ownership and access roles;
 - `case` is exhaustive pattern matching and literal switching;
 - `meta` introduces declarative compile-time metadata;
 - `dynamic` marks explicit runtime role dispatch;
-- `else if` is the conditional spelling; `match`, `fn`, `impl`, and Rust-style
-  `@attributes` are not Actus syntax.
+- `case` branches may carry a boolean guard in the form `Pattern if guard =>
+  body`; general conditional statements are not part of the Actus surface.
 
 ## 2. AST and lexical hierarchy
 
@@ -89,8 +89,9 @@ perform_declaration
 Parameters use an explicit role and optional dynamic dispatch:
 
 ```text
-parameter       = erg|abs|dat identifier : dynamic? type_name
+parameter       = erg|abs|dat|ins identifier : dynamic? type_name
 receiver        = erg|abs|dat self
+return_type     = -> abs? type_name
 type_name       = identifier type_arguments?
 type_arguments  = [ type_name ( , type_name )* ]
 generic_parameters = [ generic_parameter ( , generic_parameter )* ]
@@ -112,7 +113,8 @@ The statement family includes:
 
 ```text
 block
-owner_declaration       // erg/abs/dat name = expression
+owner_declaration         // erg/abs/dat name = expression
+loop_statement
 assignment
 field_assignment
 return_statement
@@ -123,8 +125,10 @@ drop_statement
 expression_statement
 ```
 
-Expressions include identifiers, literals, calls, method calls, struct
-literals, field access, unary/binary operations, and `case` expressions.
+Expressions include identifiers, literals, `Buffer[...]` construction, calls,
+method calls, struct literals, field access, unary/binary operations, and
+`case` expressions. Call arguments may carry an explicit role:
+`target: ins buffer` or `input: abs buffer`.
 `case` branches have the shape:
 
 ```text
@@ -246,7 +250,7 @@ coverage includes:
 1. every active keyword and punctuation token;
 2. all declaration forms and `open` placements;
 3. generic parameters, bounds, and nested type applications;
-4. `erg`, `abs`, `dat`, `self`, and `abs dynamic Role`;
+4. `erg`, `abs`, `dat`, `ins`, `self`, `-> abs Type`, and `abs dynamic Role`;
 5. struct resource fields, enum unit/tuple/named payloads;
 6. calls, field access, comparisons, and precedence boundaries;
 7. `case abs` and `case dat`, all pattern forms, guards, and `_`;

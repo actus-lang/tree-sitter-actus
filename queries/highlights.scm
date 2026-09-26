@@ -11,12 +11,12 @@
 ["verb" "struct" "enum" "role" "perform"] @keyword.function
 ["import" "open"] @keyword.modifier
 ["meta" "extern"] @keyword
-["case" "if" "else" "while" "for" "in" "return" "break" "continue"] @keyword
+["case" "if" "return" "break" "continue" "loop"] @keyword
 ["unsafe" "dynamic"] @keyword.modifier
 
 ; Ownership roles and receiver markers
 (role) @keyword.modifier
-["erg" "abs" "dat"] @keyword.modifier
+["erg" "abs" "dat" "ins"] @keyword.modifier
 "self" @variable.builtin
 "dynamic" @keyword.modifier
 

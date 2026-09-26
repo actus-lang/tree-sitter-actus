@@ -13,6 +13,7 @@
 (struct_field "," @indent.align)
 (enum_variant "," @indent.align)
 (case_branch "," @indent.align)
+(case_branch "=>" @indent.align)
 
 ; Field separators close the continuation alignment.
 (struct_field "," @indent.end)
