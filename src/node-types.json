@@ -262,6 +262,10 @@
       "required": false,
       "types": [
         {
+          "type": "doc_string",
+          "named": true
+        },
+        {
           "type": "enum_variant",
           "named": true
         },
@@ -360,6 +364,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "doc_string",
+          "named": true
+        },
         {
           "type": "generic_parameters",
           "named": true
@@ -780,6 +788,10 @@
       "required": true,
       "types": [
         {
+          "type": "doc_string",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -918,6 +930,10 @@
       "required": false,
       "types": [
         {
+          "type": "doc_string",
+          "named": true
+        },
+        {
           "type": "generic_parameters",
           "named": true
         },
@@ -1033,6 +1049,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "doc_string",
+          "named": true
+        },
         {
           "type": "field_block",
           "named": true
@@ -1182,6 +1202,10 @@
           "named": true
         },
         {
+          "type": "doc_string",
+          "named": true
+        },
+        {
           "type": "generic_parameters",
           "named": true
         },
@@ -1325,6 +1349,10 @@
     "type": "doc_comment",
     "named": true,
     "extra": true
+  },
+  {
+    "type": "doc_string",
+    "named": true
   },
   {
     "type": "drop",

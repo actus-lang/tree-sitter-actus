@@ -2,6 +2,7 @@
 
 ; Comments and literals
 (doc_comment) @comment.documentation
+(doc_string) @comment.documentation
 (line_comment) @comment
 (string) @string
 (integer) @number

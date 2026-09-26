@@ -39,12 +39,12 @@ module.exports = grammar({
     sibling_open_declaration: $ => seq('open', $.identifier, ';'),
 
     verb_declaration: $ => seq(
-      optional('open'), 'verb', field('name', $.identifier),
+      optional($.doc_string), optional('open'), 'verb', field('name', $.identifier),
       optional($.generic_parameters), $.parameter_list,
       optional($.return_type), $.block,
     ),
     external_verb_declaration: $ => seq(
-      optional('open'), optional('unsafe'), 'extern', $.string,
+      optional($.doc_string), optional('open'), optional('unsafe'), 'extern', $.string,
       'verb', field('name', $.identifier), optional($.generic_parameters),
       $.parameter_list, optional($.return_type), ';',
     ),
@@ -54,14 +54,14 @@ module.exports = grammar({
     return_type: $ => seq('->', optional('abs'), $.type_name),
 
     struct_declaration: $ => seq(
-      optional('open'), 'struct', field('name', $.identifier),
+      optional($.doc_string), optional('open'), 'struct', field('name', $.identifier),
       optional($.generic_parameters), $.field_block,
     ),
     field_block: $ => seq('{', repeat($.struct_field), '}'),
     struct_field: $ => seq(optional('erg'), $.identifier, ':', $.type_name, optional(',')),
 
     enum_declaration: $ => seq(
-      optional('open'), 'enum', field('name', $.identifier),
+      optional($.doc_string), optional('open'), 'enum', field('name', $.identifier),
       optional($.generic_parameters), '{', repeat($.enum_variant), '}',
     ),
     enum_variant: $ => seq(
@@ -75,12 +75,12 @@ module.exports = grammar({
     named_payload_field: $ => seq($.identifier, ':', $.type_name),
 
     role_declaration: $ => seq(
-      optional('open'), 'role', field('name', $.identifier),
+      optional($.doc_string), optional('open'), 'role', field('name', $.identifier),
       optional($.generic_parameters), '{', repeat($.role_method), '}',
     ),
     role_method: $ => seq('verb', $.identifier, $.parameter_list, optional($.return_type), ';'),
     perform_declaration: $ => seq(
-      optional('open'), 'perform', $.identifier, 'for', $.type_name,
+      optional($.doc_string), optional('open'), 'perform', $.identifier, 'for', $.type_name,
       '{', repeat($.verb_declaration), '}',
     ),
 
@@ -173,6 +173,7 @@ module.exports = grammar({
     float: $ => /[0-9]+\.[0-9]+/,
     string: $ => /"([^"\\]|\\.)*"/,
     identifier: $ => /[A-Za-z_][A-Za-z0-9_]*/,
+    doc_string: $ => token(/"""([^"]|"[^"\n]|""[^"\n])*"""/),
     doc_comment: $ => token(seq('///', /[^\n]*/)),
     line_comment: $ => token(seq('//', /[^\n]*/)),
   },

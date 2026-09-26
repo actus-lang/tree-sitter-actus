@@ -1,0 +1,98 @@
+==================
+declaration docstrings
+==================
+"""Adds values.
+The contract is non-owning.
+"""
+verb add(abs left: Int, abs right: Int) -> Int { return left + right; }
+
+"""A byte container.
+"""
+struct BufferView { data: Buffer }
+
+"""A reusable reader contract.
+"""
+role Reader { verb read(ins buffer: Buffer) -> Int; }
+------------------
+
+(source_file
+  (verb_declaration
+    (doc_string)
+    name: (identifier)
+    (parameter_list
+      (parameter
+        (role)
+        (parameter_name
+          (identifier))
+        (type_name
+          (identifier)))
+      (parameter
+        (role)
+        (parameter_name
+          (identifier))
+        (type_name
+          (identifier))))
+    (return_type
+      (type_name
+        (identifier)))
+    (block
+      (return_statement
+        (expression
+          (binary_expression
+            (expression
+              (primary_expression
+                (identifier)))
+            (expression
+              (primary_expression
+                (identifier))))))))
+  (struct_declaration
+    (doc_string)
+    name: (identifier)
+    (field_block
+      (struct_field
+        (identifier)
+        (type_name
+          (identifier)))))
+  (role_declaration
+    (doc_string)
+    name: (identifier)
+    (role_method
+      (identifier)
+      (parameter_list
+        (parameter
+          (role)
+          (parameter_name
+            (identifier))
+          (type_name
+            (identifier))))
+      (return_type
+        (type_name
+          (identifier))))))
+
+==================
+access-qualified return docstring
+==================
+"""Returns a view without copying.
+"""
+verb view(abs input: Buffer) -> abs Buffer { return input; }
+------------------
+
+(source_file
+  (verb_declaration
+    (doc_string)
+    name: (identifier)
+    (parameter_list
+      (parameter
+        (role)
+        (parameter_name
+          (identifier))
+        (type_name
+          (identifier))))
+    (return_type
+      (type_name
+        (identifier)))
+    (block
+      (return_statement
+        (expression
+          (primary_expression
+            (identifier)))))))
