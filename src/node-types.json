@@ -1234,6 +1234,10 @@
       "required": true,
       "types": [
         {
+          "type": "integer",
+          "named": true
+        },
+        {
           "type": "type_name",
           "named": true
         }

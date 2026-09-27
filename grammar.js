@@ -104,7 +104,7 @@ module.exports = grammar({
       optional(seq(':', $.role_bound, repeat(seq('+', $.role_bound)))),
     ),
     role_bound: $ => $.type_name,
-    type_arguments: $ => seq('[', commaSep1($.type_name), ']'),
+    type_arguments: $ => seq('[', commaSep1(choice($.type_name, $.integer)), ']'),
     dynamic_type: $ => seq('dynamic', $.type_name),
     type_name: $ => prec(1, seq(choice($.primitive_type, $.identifier), optional($.type_arguments))),
     primitive_type: $ => token(/(?:[ui](?:[1-9]|[1-9][0-9]|1[01][0-9]|12[0-8])|f32|f64|Void)/),
