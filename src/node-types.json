@@ -517,6 +517,10 @@
           "named": true
         },
         {
+          "type": "hex_integer",
+          "named": true
+        },
+        {
           "type": "integer",
           "named": true
         },
@@ -1134,6 +1138,10 @@
           "named": true
         },
         {
+          "type": "primitive_type",
+          "named": true
+        },
+        {
           "type": "type_arguments",
           "named": true
         }
@@ -1387,6 +1395,10 @@
     "named": false
   },
   {
+    "type": "hex_integer",
+    "named": true
+  },
+  {
     "type": "identifier",
     "named": true
   },
@@ -1426,6 +1438,10 @@
   {
     "type": "perform",
     "named": false
+  },
+  {
+    "type": "primitive_type",
+    "named": true
   },
   {
     "type": "return",

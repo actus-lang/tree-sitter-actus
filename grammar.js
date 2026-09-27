@@ -92,7 +92,8 @@ module.exports = grammar({
     role_bound: $ => $.type_name,
     type_arguments: $ => seq('[', commaSep1($.type_name), ']'),
     dynamic_type: $ => seq('dynamic', $.type_name),
-    type_name: $ => prec(1, seq($.identifier, optional($.type_arguments))),
+    type_name: $ => prec(1, seq(choice($.primitive_type, $.identifier), optional($.type_arguments))),
+    primitive_type: $ => token(/(?:[ui](?:[1-9]|[1-9][0-9]|1[01][0-9]|12[0-8])|f32|f64|Void)/),
     role: $ => choice('erg', 'abs', 'dat', 'ins'),
 
     block: $ => seq('{', repeat($._statement), '}'),
@@ -168,7 +169,8 @@ module.exports = grammar({
     field_initializer: $ => seq($.identifier, ':', $.expression),
     buffer_literal: $ => seq('Buffer', '[', $.expression, ']'),
 
-    literal: $ => choice($.integer, $.float, $.string, 'true', 'false'),
+    literal: $ => choice($.hex_integer, $.integer, $.float, $.string, 'true', 'false'),
+    hex_integer: $ => /0[xX][0-9a-fA-F]+/,
     integer: $ => /[0-9]+/,
     float: $ => /[0-9]+\.[0-9]+/,
     string: $ => /"([^"\\]|\\.)*"/,

@@ -1,0 +1,99 @@
+==================
+Gate 3.6 primitive types and hexadecimal literals
+==================
+verb decode(erg byte: u8, erg word: u16, erg counter: u128, erg delta: i8, erg sample: f32, erg pressure: f64, erg unit: Void) -> Void { return; }
+verb main() -> Int { erg magic: u32 = 0xDEADBEEF; return 0; }
+---
+
+(source_file
+  (verb_declaration
+    (identifier)
+    (parameter_list
+      (parameter
+        (role)
+        (parameter_name
+          (identifier))
+        (type_name
+          (primitive_type)))
+      (parameter
+        (role)
+        (parameter_name
+          (identifier))
+        (type_name
+          (primitive_type)))
+      (parameter
+        (role)
+        (parameter_name
+          (identifier))
+        (type_name
+          (primitive_type)))
+      (parameter
+        (role)
+        (parameter_name
+          (identifier))
+        (type_name
+          (primitive_type)))
+      (parameter
+        (role)
+        (parameter_name
+          (identifier))
+        (type_name
+          (primitive_type)))
+      (parameter
+        (role)
+        (parameter_name
+          (identifier))
+        (type_name
+          (primitive_type)))
+      (parameter
+        (role)
+        (parameter_name
+          (identifier))
+        (type_name
+          (primitive_type))))
+    (return_type
+      (type_name
+        (primitive_type)))
+    (block
+      (return_statement)))
+  (verb_declaration
+    (identifier)
+    (parameter_list)
+    (return_type
+      (type_name
+        (identifier)))
+    (block
+      (owner_declaration
+        (owner_role)
+        (identifier)
+        (type_name
+          (primitive_type))
+        (expression
+          (primary_expression
+            (literal
+              (hex_integer)))))
+      (return_statement
+        (expression
+          (primary_expression
+            (literal
+              (integer))))))))
+
+==================
+Hexadecimal literal forms
+==================
+verb main() -> Int { return 0x0; }
+---
+
+(source_file
+  (verb_declaration
+    (identifier)
+    (parameter_list)
+    (return_type
+      (type_name
+        (identifier)))
+    (block
+      (return_statement
+        (expression
+          (primary_expression
+            (literal
+              (hex_integer))))))))

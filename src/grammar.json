@@ -1122,8 +1122,17 @@
         "type": "SEQ",
         "members": [
           {
-            "type": "SYMBOL",
-            "name": "identifier"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "primitive_type"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "identifier"
+              }
+            ]
           },
           {
             "type": "CHOICE",
@@ -1138,6 +1147,13 @@
             ]
           }
         ]
+      }
+    },
+    "primitive_type": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "(?:[ui](?:[1-9]|[1-9][0-9]|1[01][0-9]|12[0-8])|f32|f64|Void)"
       }
     },
     "role": {
@@ -2196,6 +2212,10 @@
       "members": [
         {
           "type": "SYMBOL",
+          "name": "hex_integer"
+        },
+        {
+          "type": "SYMBOL",
           "name": "integer"
         },
         {
@@ -2215,6 +2235,10 @@
           "value": "false"
         }
       ]
+    },
+    "hex_integer": {
+      "type": "PATTERN",
+      "value": "0[xX][0-9a-fA-F]+"
     },
     "integer": {
       "type": "PATTERN",
