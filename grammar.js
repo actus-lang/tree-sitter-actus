@@ -29,6 +29,7 @@ module.exports = grammar({
       $.enum_declaration,
       $.role_declaration,
       $.perform_declaration,
+      $.pack_declaration,
     ),
 
     metadata_declaration: $ => seq('meta', $.identifier, optional($.metadata_arguments), ';'),
@@ -82,6 +83,19 @@ module.exports = grammar({
     perform_declaration: $ => seq(
       optional($.doc_string), optional('open'), 'perform', $.identifier, 'for', $.type_name,
       '{', repeat($.verb_declaration), '}',
+    ),
+
+    pack_declaration: $ => seq(
+      optional($.doc_string), 'pack', field('name', $.identifier), '{',
+      $.pack_storage, $.pack_layout, $.pack_fields,
+      '}',
+    ),
+    pack_storage: $ => seq('erg', 'storage', ':', $.type_name, ';'),
+    pack_layout: $ => seq('layout', choice('little', 'big'), ';'),
+    pack_fields: $ => seq('fields', '{', repeat($.pack_field), '}'),
+    pack_field: $ => seq(
+      $.role, field('name', $.identifier), ':', $.type_name,
+      'at', $.integer, optional(seq('=', $.literal)), ';',
     ),
 
     generic_parameters: $ => seq('[', commaSep1($.generic_parameter), ']'),

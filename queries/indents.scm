@@ -17,3 +17,5 @@
 
 ; Field separators close the continuation alignment.
 (struct_field "," @indent.end)
+
+(pack_field ";" @indent.align)

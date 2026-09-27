@@ -12,6 +12,8 @@
 (struct_declaration name: (identifier) @local.definition)
 (enum_declaration name: (identifier) @local.definition)
 (role_declaration name: (identifier) @local.definition)
+(pack_declaration name: (identifier) @local.definition)
+(pack_field name: (identifier) @local.definition)
 (generic_parameter (identifier) @local.definition)
 (parameter_name (identifier) @local.definition)
 (owner_declaration (identifier) @local.definition)

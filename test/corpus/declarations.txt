@@ -95,3 +95,59 @@ role Writer { verb write(abs self: Self, abs data: Buffer) -> Int; }
       (return_type
         (type_name
           (identifier))))))
+
+==================
+pack register
+==================
+pack ControlRegister {
+    erg storage: u32;
+    layout little;
+    fields {
+        erg enabled: u1 at 0;
+        abs ready: u1 at 1;
+        erg prescaler: u4 at 2;
+        erg mode: u2 at 6;
+        abs _reserved: u24 at 8 = 0;
+    }
+}
+------------------
+(source_file
+  (pack_declaration
+    name: (identifier)
+    (pack_storage
+      (type_name
+        (primitive_type)))
+    (pack_layout)
+    (pack_fields
+      (pack_field
+        (role)
+        name: (identifier)
+        (type_name
+          (primitive_type))
+        (integer))
+      (pack_field
+        (role)
+        name: (identifier)
+        (type_name
+          (primitive_type))
+        (integer))
+      (pack_field
+        (role)
+        name: (identifier)
+        (type_name
+          (primitive_type))
+        (integer))
+      (pack_field
+        (role)
+        name: (identifier)
+        (type_name
+          (primitive_type))
+        (integer))
+      (pack_field
+        (role)
+        name: (identifier)
+        (type_name
+          (primitive_type))
+        (integer)
+        (literal
+          (integer))))))

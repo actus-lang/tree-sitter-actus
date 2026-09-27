@@ -7,6 +7,8 @@
 (enum_declaration) @fold
 (role_declaration) @fold
 (perform_declaration) @fold
+(pack_declaration) @fold
+(pack_fields) @fold
 (case_statement) @fold
 (case_expression) @fold
 (case_branch (block) @fold)

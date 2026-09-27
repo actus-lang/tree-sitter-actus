@@ -10,7 +10,9 @@
 (float) @number
 
 ; Declaration and control-flow keywords
-["verb" "struct" "enum" "role" "perform"] @keyword.function
+["verb" "struct" "enum" "role" "perform" "pack"] @keyword.function
+["layout" "fields" "at"] @keyword
+["little" "big"] @storageclass
 ["import" "open"] @keyword.modifier
 ["meta" "extern"] @keyword
 ["case" "if" "return" "break" "continue" "loop"] @keyword
@@ -30,6 +32,9 @@
 (struct_declaration name: (identifier) @type)
 (enum_declaration name: (identifier) @type)
 (role_declaration name: (identifier) @type)
+(pack_declaration name: (identifier) @type)
+(pack_storage "storage" @storageclass)
+(pack_field name: (identifier) @property)
 (enum_variant (identifier) @constant)
 (field_initializer (identifier) @property)
 (field_access (identifier) @property)
