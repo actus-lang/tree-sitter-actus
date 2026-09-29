@@ -1,0 +1,72 @@
+==================
+Gate 7 and Gate 8 indexing and checked casts
+==================
+verb transform(ins values: Array[u8, 4], abs bytes: Buffer) -> Usize {
+  erg index: Usize = 1 as Usize;
+  values[index] = bytes[index as u8];
+  return index;
+}
+---
+
+(source_file
+  (verb_declaration
+    (identifier)
+    (parameter_list
+      (parameter
+        (role)
+        (parameter_name
+          (identifier))
+        (type_name
+          (identifier)
+          (type_arguments
+            (type_name
+              (primitive_type))
+            (integer))))
+      (parameter
+        (role)
+        (parameter_name
+          (identifier))
+        (type_name
+          (identifier))))
+    (return_type
+      (type_name
+        (primitive_type)))
+    (block
+      (owner_declaration
+        (owner_role)
+        (identifier)
+        (type_name
+          (primitive_type))
+        (expression
+          (cast_expression
+            (expression
+              (primary_expression
+                (literal
+                  (integer))))
+            (cast_type
+              (primitive_type)))))
+      (assignment_statement
+        (index_access
+          (expression
+            (primary_expression
+              (identifier)))
+          (expression
+            (primary_expression
+              (identifier))))
+        (expression
+          (postfix_expression
+            (index_access
+              (expression
+                (primary_expression
+                  (identifier)))
+              (expression
+                (cast_expression
+                  (expression
+                    (primary_expression
+                      (identifier)))
+                  (cast_type
+                    (primitive_type))))))))
+      (return_statement
+        (expression
+          (primary_expression
+            (identifier)))))))

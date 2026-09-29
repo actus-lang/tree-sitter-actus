@@ -107,7 +107,7 @@ module.exports = grammar({
     type_arguments: $ => seq('[', commaSep1(choice($.type_name, $.integer)), ']'),
     dynamic_type: $ => seq('dynamic', $.type_name),
     type_name: $ => prec(1, seq(choice($.primitive_type, $.identifier), optional($.type_arguments))),
-    primitive_type: $ => token(/(?:[ui](?:[1-9]|[1-9][0-9]|1[01][0-9]|12[0-8])|f32|f64|Void)/),
+    primitive_type: $ => token(/(?:[ui](?:[1-9]|[1-9][0-9]|1[01][0-9]|12[0-8])|f32|f64|Void|Usize)/),
     role: $ => choice('erg', 'abs', 'dat', 'ins'),
 
     block: $ => seq('{', repeat($._statement), '}'),
@@ -130,7 +130,7 @@ module.exports = grammar({
     break_statement: $ => seq('break', ';'),
     continue_statement: $ => seq('continue', ';'),
     drop_statement: $ => seq('drop', '(', $.identifier, ')', ';'),
-    assignment_statement: $ => seq(choice($.field_access, $.identifier), '=', $.expression, ';'),
+    assignment_statement: $ => seq(choice($.field_access, $.index_access, $.identifier), '=', $.expression, ';'),
     expression_statement: $ => seq($.expression, ';'),
 
     case_statement: $ => seq(
@@ -152,6 +152,7 @@ module.exports = grammar({
       $.case_expression,
       $.binary_expression,
       $.unary_expression,
+      $.cast_expression,
       $.postfix_expression,
       $.primary_expression,
     ),
@@ -164,9 +165,13 @@ module.exports = grammar({
     unary_expression: $ => prec(4, seq(choice('-', '!'), $.expression)),
     postfix_expression: $ => choice(
       $.field_access,
+      $.index_access,
       prec.left(5, seq($.expression, $.argument_list)),
     ),
     field_access: $ => prec.left(5, seq($.expression, '.', $.identifier)),
+    index_access: $ => prec.left(5, seq($.expression, '[', $.expression, ']')),
+    cast_expression: $ => prec.left(6, seq($.expression, 'as', $.cast_type)),
+    cast_type: $ => choice($.primitive_type, $.identifier),
     primary_expression: $ => choice(
       $.buffer_literal,
       $.identifier,

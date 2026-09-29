@@ -46,11 +46,11 @@
 
 ; Built-in types, including generic applications
 ((identifier) @type.builtin
-  (#match? @type.builtin "^(Bool|Char|String|Int|I8|I16|I32|I64|U8|U16|U32|U64|Usize|F32|F64|Unit|Option|Result|Buffer)$"))
+  (#match? @type.builtin "^(Bool|Char|String|Int|I8|I16|I32|I64|U8|U16|U32|U64|Usize|F32|F64|Unit|Option|Result|Buffer|Array|Arena|Map)$"))
 (primitive_type) @type.builtin
 (type_name (identifier) @type)
 
 ; Operators and delimiters
-["+" "-" "*" "/" "!" "<" "<=" ">" ">=" "==" "!=" "=" "=>" "->"] @operator
+["+" "-" "*" "/" "!" "<" "<=" ">" ">=" "==" "!=" "=" "=>" "->" "as"] @operator
 ["(" ")" "[" "]" "{" "}"] @punctuation.bracket
 ["," ":" ";" "." "::"] @punctuation.delimiter

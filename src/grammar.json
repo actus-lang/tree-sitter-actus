@@ -1357,7 +1357,7 @@
       "type": "TOKEN",
       "content": {
         "type": "PATTERN",
-        "value": "(?:[ui](?:[1-9]|[1-9][0-9]|1[01][0-9]|12[0-8])|f32|f64|Void)"
+        "value": "(?:[ui](?:[1-9]|[1-9][0-9]|1[01][0-9]|12[0-8])|f32|f64|Void|Usize)"
       }
     },
     "role": {
@@ -1607,6 +1607,10 @@
             {
               "type": "SYMBOL",
               "name": "field_access"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "index_access"
             },
             {
               "type": "SYMBOL",
@@ -1948,6 +1952,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "cast_expression"
+        },
+        {
+          "type": "SYMBOL",
           "name": "postfix_expression"
         },
         {
@@ -2142,6 +2150,10 @@
           "name": "field_access"
         },
         {
+          "type": "SYMBOL",
+          "name": "index_access"
+        },
+        {
           "type": "PREC_LEFT",
           "value": 5,
           "content": {
@@ -2180,6 +2192,65 @@
           }
         ]
       }
+    },
+    "index_access": {
+      "type": "PREC_LEFT",
+      "value": 5,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          },
+          {
+            "type": "STRING",
+            "value": "["
+          },
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          },
+          {
+            "type": "STRING",
+            "value": "]"
+          }
+        ]
+      }
+    },
+    "cast_expression": {
+      "type": "PREC_LEFT",
+      "value": 6,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          },
+          {
+            "type": "STRING",
+            "value": "as"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "cast_type"
+          }
+        ]
+      }
+    },
+    "cast_type": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "primitive_type"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        }
+      ]
     },
     "primary_expression": {
       "type": "CHOICE",

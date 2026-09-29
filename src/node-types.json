@@ -56,6 +56,10 @@
         {
           "type": "identifier",
           "named": true
+        },
+        {
+          "type": "index_access",
+          "named": true
         }
       ]
     }
@@ -208,6 +212,44 @@
     }
   },
   {
+    "type": "cast_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "cast_type",
+          "named": true
+        },
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "cast_type",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "primitive_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "continue_statement",
     "named": true,
     "fields": {}
@@ -313,6 +355,10 @@
         },
         {
           "type": "case_expression",
+          "named": true
+        },
+        {
+          "type": "cast_expression",
           "named": true
         },
         {
@@ -499,6 +545,21 @@
       "types": [
         {
           "type": "module_path",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "index_access",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
           "named": true
         }
       ]
@@ -939,6 +1000,10 @@
         },
         {
           "type": "field_access",
+          "named": true
+        },
+        {
+          "type": "index_access",
           "named": true
         }
       ]
@@ -1454,6 +1519,10 @@
   },
   {
     "type": "abs",
+    "named": false
+  },
+  {
+    "type": "as",
     "named": false
   },
   {
