@@ -51,6 +51,6 @@
 (type_name (identifier) @type)
 
 ; Operators and delimiters
-["+" "-" "*" "/" "!" "<" "<=" ">" ">=" "==" "!=" "=" "=>" "->" "as"] @operator
+["+" "-" "*" "/" "%" "!" "~" "<" "<=" ">" ">=" "==" "!=" "&&" "||" "&" "|" "^" "<<" ">>" "=" "=>" "->" "as"] @operator
 ["(" ")" "[" "]" "{" "}"] @punctuation.bracket
 ["," ":" ";" "." "::"] @punctuation.delimiter

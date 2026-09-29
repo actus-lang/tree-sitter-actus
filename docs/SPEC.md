@@ -152,12 +152,15 @@ The grammar must encode precedence from tightest to loosest:
 1. primary expressions: identifiers, literals, grouped expressions, struct
    literals, and case expressions;
 2. postfix expressions: field access, calls, and method calls;
-3. unary operators;
-4. multiplicative arithmetic: `*`, `/`;
+3. unary operators: `!`, `~`, and unary `-`;
+4. multiplicative arithmetic: `*`, `/`, `%`;
 5. additive arithmetic: `+`, `-`;
-6. comparisons: `<`, `<=`, `>`, `>=`, `==`, `!=`;
-7. logical operators when introduced by the compiler grammar;
-8. assignment, which is a statement-level construct rather than an
+6. shifts: `<<`, `>>`;
+7. bitwise `&`, `^`, and `|`;
+8. comparisons: `<`, `<=`, `>`, `>=`;
+9. equality: `==`, `!=`;
+10. logical operators: `&&`, `||`;
+11. assignment, which is a statement-level construct rather than an
    expression-level value.
 
 `=>` and `->` are distinct multi-character tokens and must never be split into

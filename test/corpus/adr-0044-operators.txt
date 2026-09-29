@@ -1,0 +1,22 @@
+==================
+ADR-0044 operators preserve compiler precedence
+==================
+
+verb main() -> Bool {
+  erg left: u8 = 13;
+  erg right: u8 = 5;
+  erg count: u8 = 1;
+  return left % right == 3 && (left & right) ^ left != 0 || left << count >= right;
+}
+
+==================
+Checked casts and bounded indexing
+==================
+
+verb main() -> Int {
+  erg values: Array[u8, 2] = Array[u8, 2]();
+  erg index: Usize = 0;
+  erg bytes: Buffer = Buffer[0];
+  append(bytes, 41);
+  return (values[index] as Int) + (bytes[index as u8] as Int);
+}
